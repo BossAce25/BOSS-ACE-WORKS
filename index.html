@@ -23,6 +23,70 @@
   <link rel="canonical" href="https://bossace25.github.io/BOSS-ACE-WORKS/">
 </head>
 <body>
+<!-- 🌐 GO GLOBAL TRANSLATE -->
+<div id="google_translate_element" style="position:fixed; top:10px; right:10px; z-index:999;"></div>
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement(
+    {pageLanguage: 'en'},
+    'google_translate_element'
+  );
+}
+</script>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<!-- 🤖 GO CHATBOT -->
+<style>
+#chatbox {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  width: 300px;
+  height: 360px;
+  background: #111;
+  border: 2px solid #0f0;
+  padding: 10px;
+  overflow-y: auto;
+  font-family: monospace;
+  color: #0f0;
+  z-index: 9999;
+}
+#chatbox input {
+  width: 90%;
+  background: #000;
+  color: #0f0;
+  border: 1px solid #0f0;
+}
+</style>
+<div id="chatbox">
+  <div><b>IRONWALL AI Chat:</b></div>
+  <div id="chatlog"></div>
+  <input type="text" id="chatinput" placeholder="Ask me anything...">
+</div>
+<script>
+const log = document.getElementById('chatlog');
+document.getElementById('chatinput').addEventListener('keypress', function(e){
+  if(e.key === 'Enter') {
+    let q = this.value;
+    log.innerHTML += "<div>👨‍💻 You: " + q + "</div>";
+    let r = "🤖 IRONWALL: I'm always watching, Boss Ace.";
+    if (q.toLowerCase().includes("hacker")) r = "⚠️ IRONWALL Alert: Hacker behavior detected!";
+    if (q.toLowerCase().includes("help")) r = "🛡️ I am your AI shield. You are protected.";
+    log.innerHTML += "<div>" + r + "</div>";
+    this.value = "";
+    log.scrollTop = log.scrollHeight;
+  }
+});
+</script>
+
+<!-- 🔒 GO AI SHIELD (Decoy Alert to Scanners) -->
+<script>
+setTimeout(() => {
+  let decoy = document.createElement('div');
+  decoy.innerHTML = "<div style='position:fixed; top:40px; left:10px; background:#f00; color:#fff; padding:5px; z-index:999;'>🛑 Security Alert: Unauthorized scan detected!</div>";
+  document.body.appendChild(decoy);
+}, 7000);
+</script>
 <!-- 🛡️ IRONWALL FX by Boss Ace -->
 <style>
 body {
