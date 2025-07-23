@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://bossace25.github.io/IRONWALL_RECORD/sitemap.xml
+Sitemap: https://bossace25.github.io/BOSS-ACE-WORKS/sitemap.xml
