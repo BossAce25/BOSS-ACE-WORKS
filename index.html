@@ -131,4 +131,40 @@ h1, h2 {
   <h1>🛡️ IRONWALL INFINITY Ω</h1>
   <p>Protected by Boss Ace. The strongest AI firewall system ever built.</p>
 </body>
+<script>
+setTimeout(() => {
+  let hp = document.createElement('div');
+  hp.innerHTML = "<form action='/trap' style='position:fixed;bottom:0;left:0;background:#000;color:#f00;padding:10px;'>Enter Admin password:<input type='password'></form>";
+  document.body.appendChild(hp);
+}, 5000);
+</script>
+<script>
+async function callGPT(prompt) {
+  let res = await fetch('https://api.openai.com/v1/engines/gpt-3.5-turbo/completions', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer YOUR_OPENAI_API_KEY'
+    },
+    body: JSON.stringify({
+      model: 'gpt-3.5-turbo',
+      messages: [{role: 'user', content: prompt}],
+    })
+  });
+  let data = await res.json();
+  return data.choices[0].message.content;
+}
+
+document.getElementById('chatinput')
+  .addEventListener('keypress', async function(e){
+    if (e.key === 'Enter') {
+      let q = this.value;
+      this.value = '';
+      let reply = await callGPT(q);
+      let log = document.getElementById('chatlog');
+      log.innerHTML += "<div>🤖 AI: " + reply + "</div>";
+      log.scrollTop = log.scrollHeight;
+    }
+  });
+</script>
 </html>
